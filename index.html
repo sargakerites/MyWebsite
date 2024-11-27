@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="hu">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kezdőlap - Nagy Eszter honlapja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" title="normal">
+    <link rel="alternate stylesheet" type="text/css" href="css/style_nagy.css" title="large">
+    <link rel="stylesheet" href="css/style_print.css" media="print" title="print">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="styleswitcher.js"></script>
+</head>
+
+<body>
+
+    <header>
+
+        <nav id="tartalomraugras">
+            <a href="#tartalom">Ugrás a tartalomra</a>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand bottom-link" href="index.html">Kezdőlap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="kodolas.html">Kódolás</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="csatorna.html">Csatorna</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="dekodolas.html">Dekódolás</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="visuals">
+            <a id="large" class="visited-link" href="index.html"
+                onclick="setActiveStyleSheet('large'); return false;"><span class="ikon"></span>Nagybetűs verzió</a>
+            <a id="normal" class="visited-link" href="index.html"
+                onclick="setActiveStyleSheet('normal'); return false;"><span class="ikon"></span>Normál verzió</a>
+        </nav>
+
+    </header>
+    <main id="tartalom">
+        <div class="container-fluid">
+            <article class="row">
+
+                <div class="col-md-11">
+
+                    <h1>Hibajavító Kódok és Alkalmazásaik</h1>
+                </div>
+                <div class="col-md-1">
+                    <figure>
+                        <a href="images/elte_logo.png">
+                            <img src="images/elte_logo_2.jpg" class="img-fluid"
+                                alt="A képen az Eötvös Loránd Tudományegyetem bélyegzője található,  középen a címerrel és körbe pedig az egyetem neve latinul.">
+                        </a>
+                    </figure>
+                </div>
+                
+                    <div class="col-md-6">
+                        <section>
+                            <h2>A weboldal célja</h2>
+                                <p>
+                                Az oldal célja a szakdolgozatom bemutatása,
+                                amelyet az <b>Eötvös Loránd Tudományegyetem</b> Matematika BSc szakán készítettem.
+                                A dolgozat a kódelméleten belül a hibajavító kódokkal,
+                                azon belül is a Reed-Solomon kódokkal foglalkozik.
+                                A weboldal az üzenetküldés három fő lépését ismerteti:
+                                a <i>kódolást</i>, a <i>csatornát</i>, valamint a <i>dekódolást</i>.
+                                </p>
+                        </section>    
+                    </div>
+                    <div class="col-md-6">
+                        
+                        <form action="mailto:agyeszti@gmail.com" method="post" enctype="text/plain">
+                            
+                            <h3>Mondd el a véleményed!</h3>
+                            <label for="contact_name2"><strong>Mit gondolsz a szakdolgozatomról?</strong></label><br>
+                            <textarea name="comment" id="contact_name2" cols="50" rows="5" maxlength="400"></textarea><br>
+                            <fieldset>
+                                <legend>Az üzenetküldés útjának melyik része volt a legérdekesebb?</legend>
+                                <p>
+                                    <input type="radio" name="project" id="p1" value="1"><label for="p1">Kódolás</label> <br>
+                                    <input type="radio" name="project" id="p2" value="2"><label for="p2">Csatorna</label> <br>
+                                    <input type="radio" name="project" id="p3" value="3"><label for="p3">Dekódolás</label> <br>
+                                </p>
+                            </fieldset>
+                            <label for="contact_name"><strong>Név</strong></label><br>
+                            <input type="text" name="name" id="contact_name" size="51" maxlength="50"><br>
+                            <label for="contact_name3"><strong>Email cím</strong></label><br>
+                            <input type="text" name="name" id="contact_name3" size="51" maxlength="50"><br>
+                            <input type="checkbox" name="permission" id="permission" value="igen">
+                            <label for="permission">Elfogadom az adatkezelési feltételeket!</label> <br>
+                            <input type="reset" value="Alaphelyzet">
+                            <input type="submit" value="Elküldés">
+                            
+                        </form>
+                        
+                        
+                    </div>
+
+                </article>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+        A részletes matematikai háttér,
+        valamint a Python nyelven megvalósított interaktív kód eléréséhez az eredeti
+        dolgozat az alábbi linken érhető el:
+        <a href="pdf-ek/Thesis.pdf" target="_blank" class="visited-link">Hibajavító kódok és
+        alkalmazásaik</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

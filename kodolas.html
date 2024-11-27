@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kódolás - Nagy Eszter honlapja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" title="normal">
+    <link rel="alternate stylesheet" type="text/css" href="css/style_nagy.css" title="large">
+    <link rel="stylesheet" href="css/style_print.css" media="print" title="print">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="styleswitcher.js"></script>
+</head>
+
+<body>
+    
+    <header>
+
+        <nav id="tartalomraugras">
+            <a href="#tartalom">Ugrás a tartalomra</a>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Kezdőlap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link bottom-link" aria-current="page" href="kodolas.html">Kódolás</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="csatorna.html">Csatorna</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="dekodolas.html">Dekódolás</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="visuals">
+            <a id="large" class="visited-link" href="kodolas.html"
+                onclick="setActiveStyleSheet('large'); return false;"><span class="ikon"></span>Nagybetűs verzió</a>
+            <a id="normal" class="visited-link" href="kodolas.html"
+                onclick="setActiveStyleSheet('normal'); return false;"><span class="ikon"></span>Normál verzió</a>
+        </nav>
+
+    </header>
+    <main id="tartalom">
+        <h1>Kódolás</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <aside>
+                        <p>
+                        Képzeljük el, hogy üzenetet szeretnénk küldeni egy barátunknak.
+                        Ezt egy <i>kommunikációs csatornán</i> keresztül tehetjük meg, ez az a hely, 
+                        ahol az információcsere létrejöhet. A gyakorlatban előfordul, hogy ez a csatorna <i>zajos</i>, 
+                        ami annyit jelent, hogy az az információ, amit küldeni szeretnénk, sok esetben megsérül, 
+                        tehát nem ugyanaz érkezik meg a címzetthez, mint amit a feladó elküldött. Ezeket a 
+                        rendellenességeket a <b>hibajavító kódok</b> alkalmazásával tudjuk kiküszöbölni. 
+                        A hibajavító kódok célja, hogy minél több hiba javítható legyen és ennek 
+                        ellenére ne hosszabbodjon túlzott mértékben az üzenet, valamint a kódolás 
+                        illetve dekódolás futási ideje is megfelelő gyorsaságú legyen.
+                        </p>
+                    </aside>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <a href="images/kodolas.jpeg">
+                            <img src="images/kodolas_2.jpeg" class="img-fluid"
+                                alt="A képen az üzenetküldés útja látható. Részletesebben a szöveges üzenet elindul az adótól, forráskódolással m kódszó keletkezik belőle, majd blokk-kódolással c kódszóvá alakul. Ezt a folyamatot hívjuk elkódolásnak. A kódszót  már keresztül lehet küldeni a zajos csatornán, amelyből c’ sérült kódszó keletkezik. Ezt a sérült kódszót visszaalakítva az eredeti szöveges üzenetté a vevő már el tudja olvasni az üzenet eredeti tartalmát. Ezt a folyamatot dekódolásnak nevezzük.">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <aside>
+                        <p>
+                            Tegyük fel, hogy mi az alábbi szövegrészletet szeretnénk elküldeni: <br>
+                            The cat is sleeping. The dog is eating. <br>
+                            Ahhoz viszont, hogy egy ilyen “nagyobb” terjedelmű üzenetet, úgy tudjuk kódolni, 
+                            hogy a kód hibajavító képessége és az algoritmus futásideje is ideális maradjon, 
+                            fel kell osztanunk a szöveget kisebb egységekre. A választásom a négy karakter hosszú blokkokra esett. 
+                            Ekkor az első mondatot véve a négy karakterenként felbontott üzenet az alábbi lesz: <br>
+                            [[T, h, e, szóköz], [c, a, t, szóköz], [i, s, szóköz, s], [l, e, e, p], [i, n, g, .]] <br>
+                            Tehát ha megvannak a négy hosszú tömbök, akkor egyesével kódoljuk és elküldjük őket a csatornán.
+                            Az eredeti üzenetet először matematikailag értelmezhető kifejezéssé kell alakítanunk, 
+                            ezt a fajta kódolást forráskódolásnak nevezzük. A kód bázisa egy véges test lesz, amelyet GF(2<sup>6</sup>)-nak választottam. 
+                            (A véges test elemeit az alábbi linken tekintheted meg: <a href="pdf-ek/Kodolas.pdf" target="_blank" class="visited-link">GF(64)</a> )<br>
+                            A forráskódolás bemenetként egy karaktert kap és az imént említett véges test egy eleméhez rendeli hozzá. 
+                            Tehát feleltessük meg az általunk használt 64 karakter mindegyikét a test 64 elemével. 
+                            Itt már a polinomok helyett a Pythonban tömbökkel reprezentáltam a testelemeket, 
+                            így minden karakter megfelel egy páronként különböző, hat hosszú bináris számsorozatnak.
+                        </p>
+                    </aside>
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <a href="images/kodolas2.jpeg">
+                            <img src="images/kodolas2_2.jpeg" class="img-fluid"
+                                alt="A képen a 64 elemű abc karakterei (angol abc nagy és kis betűi, számok, valamint mondatközi és mondatvégi írásjelek) vannak megfeleltetve hat hosszú bináris számsorozatnak.">
+                        </a>
+                    </figure>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p>
+                            A példamondatunkat vigyük tovább és feleltessük meg a 
+                            karaktereit a megfelelő számsorozatoknak, az alábbi módon: 
+                        </p>
+                        
+                            <table>
+                                <caption>
+                                    <strong>Megfeleltetés</strong>
+                                    <details>
+                                        <summary>Segítség</summary>
+                                        <p>A "T" karakter megfeleltetése a [1,1,0,0,1,0].</p>
+                                    </details>
+                                </caption>
+                                <tr>
+                                    <th>Első karakter</th>
+                                    <th>Második karakter</th>
+                                    <th>Harmadik karakter</th>
+                                    <th>Negyedik karakter</th>
+                                </tr>
+                                <tr>
+                                    <td>T</td>
+                                    <td>h</td>
+                                    <td>e</td>
+                                    <td>szóköz</td>
+                                </tr>
+                                <tr>
+                                    <td>c</td>
+                                    <td>a</td>
+                                    <td>t</td>
+                                    <td>szóköz</td>
+                                </tr>
+                                <tr>
+                                    <td>i</td>
+                                    <td>s</td>
+                                    <td>szóköz</td>
+                                    <td>s</td>
+                                </tr>
+                                <tr>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                    <td>...</td>
+                                </tr>
+                            </table>
+                        
+                        <p>
+                            Tehát ha a „T” karaktert szeretnénk kódolni, akkor a test táblázatban a [1,1,0,0,1,0]-nak, 
+                            a testelemek közül pedig a g<sup>46</sup> = x<sup>5</sup> + x<sup>4</sup> + x -nek felel meg. 
+                            Ezek után a blokk-kódolás következik, azonban mivel az algoritmusomat úgy építettem föl, 
+                            hogy a blokkokra bontást már korábban elvégezte, ezért már csak a kódolás hiányzik. 
+                            Az általános lépés a következő: <br>
+                            f<sub>m</sub>(α<sub>i</sub>) = m<sub>0</sub> + m<sub>1</sub>α<sub>i</sub> + m<sub>2</sub>α<sub>i</sub><sup>2</sup> + m<sub>3</sub>α<sub>i</sub><sup>3</sup> = c<sub>i</sub>, ahol 
+                            α a 64 elemű test elemei közül általam kiválasztott nyolc elem, melyek a következők: 
+                            α = (g<sup>4</sup>,g<sup>12</sup>,g<sup>20</sup>,g<sup>28</sup>,g<sup>36</sup>,g<sup>44</sup>,g<sup>52</sup>,g<sup>60</sup>).
+                            Az m az elküldeni kívánt négy hosszú üzenet elemei.
+                            A c pedig a kódszó. 
+                            Valamint minden műveletet a véges test fölött végzünk.
+                            A példa mondatunk forrás illetve blokk-kódolt verziója a következő: <br>
+                            [[1,1,1,1,0,1],[1,1,0,1,1,0],[1,1,0,1,1,1],[0,1,0,1,0,1], <br>
+                            [0,0,1,0,1,1],[0,1,0,1,0,0],[1,1,1,0,0,1],[1,1,0,0,1,1]] . <br>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>Ezt küldjük tovább a zajos csatornán.</p>
+    </footer>
+    
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dekódolás - Nagy Eszter honlapja</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="css/style.css" title="normal">
+    <link rel="alternate stylesheet" type="text/css" href="css/style_nagy.css" title="large">
+    <link rel="stylesheet" href="css/style_print.css" media="print" title="print">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="styleswitcher.js"></script>
+</head>
+
+<body>
+    
+    <header>
+
+        <nav id="tartalomraugras">
+            <a href="#tartalom">Ugrás a tartalomra</a>
+        </nav>
+
+        <nav class="navbar navbar-expand-lg bg-body-tertiary">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="index.html">Kezdőlap</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                    aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="kodolas.html">Kódolás</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" href="csatorna.html">Csatorna</a>
+                        </li>
+
+                        <li class="nav-item">
+                            <a class="nav-link bottom-link" aria-current="page" href="dekodolas.html">Dekódolás</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <nav id="visuals">
+            <a id="large" class="visited-link" href="dekodolas.html"
+                onclick="setActiveStyleSheet('large'); return false;"><span class="ikon"></span>Nagybetűs verzió</a>
+            <a id="normal" class="visited-link" href="dekodolas.html"
+                onclick="setActiveStyleSheet('normal'); return false;"><span class="ikon"></span>Normál verzió</a>
+        </nav>
+
+    </header>
+    <main id="tartalom">
+        <h1>Dekódolás</h1>
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    
+                    <p>
+                        Abban az esetben, amikor az elküldött kód megsérül a csatornán, <b>dekódolás</b> alatt nem elég pusztán arról beszélnünk, 
+                        hogy a kódolt üzenetből megkapjuk az eredeti tartalmat. Mivel ezt a kódot visszafejtve nem az eredeti üzenetet kapjuk vissza, 
+                        ezért először a <i>hibajavítást</i> kell elvégeznünk. Tehát e két folyamat együttese adja egy hibajavító kód dekódolását. <br>
+                        Legyen R(x) az az N − 1 fokú polinom, ami α-ból a c′-be képez, az alábbi módon: <br>
+                    </p>
+                        <div class="centered-equations">
+                            <div class="equations">
+                                c ′<sub>1</sub> = R (α<sub>1</sub>) , <br>
+                                c ′<sub>2</sub> = R (α<sub>2</sub>) , <br>
+                                … <br>
+                                c′<sub>N</sub> =R(α<sub>N</sub>). <br>
+                            </div>
+                        </div>
+                    
+                    <p>
+                        Legyen fm(x) továbbra is az üzenetet elkódoló polinom, amit korábban is használtunk.
+                        Ezen felül legyen E(x) egy t-ed fokú hibahely függvény, amely adott αi-hez akkor rendel nulla testelemet, 
+                        ha ott hiba történt és nem nulla testelemet, ha a kódszó ott sértetlen. <br>
+                        E(x) = (x − e<sub>1</sub>)(x − e<sub>2</sub>) . . . (x − e<sub>t</sub>), ahol e =α<sub>i</sub><sub>1</sub>  ,e =α<sub>i</sub><sub>2</sub> ,...,e =α<sub>i</sub><sub>t</sub> alkalmas i<sub>1</sub> ,i<sub>2</sub> ,...,i<sub>t</sub>-re. 
+                        A fenti függvények közül, számunkra csak az R(x) ismert. Most lássuk, hogyan kapjuk meg a polinomok és a sérült kódszó segítségével az eredeti kódszót. 
+                        f<sub>m</sub>(x) · E(x) = R(x) · 
+                    </p>
+                    
+                </div>
+                <div class="col-md-6">
+                    <figure>
+                        <a href="images/dekodolas.jpg">
+                            <img src="images/dekodolas_2.jpg" class="img-fluid"
+                                alt="A képen az f_m(x), az E(x) és az R(x) függvények reprezantációja látható, egy közös koordináta rendszerben. Az x tengelyen az alphák, az y tengelyen pedig a c értékei láthatók. Az E(x) függvény ahol 0 értéket vesz fel ott a másik két függvény különbző értékeket ad, azonban ahol az E(x) nem nulla ott az f_m(x) és az R(x) ugyanazon értéket vesznek fel.">
+                        </a>
+                    </figure>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    
+                        <p>
+                        E(x), ahol x = αi,i = 1,2,...,N. <br>
+                        Itt olyan αi-re, ahol nem történt hiba f<sub>m</sub>(x) megegyezik R(x)-el, ahol pedig hiba történt az E(x) nulla értéket vesz fel, 
+                        ezáltal azonosan nullával szintén egyenlő a két oldal. Nevezzük ezentúl az f<sub>m</sub>(x) · E(x) szorzatot Q(x)-nek. 
+                        Fejtsük ki ezt az egyenletrendszert! <br>
+                        </p>
+                        <div class="centered-equations">
+                            <div class="equations">
+                                Q(α<sub>1</sub>) = R(α<sub>1</sub>) · E(α<sub>1</sub>), <br>
+                                Q(α<sub>2</sub>) = R(α<sub>2</sub>) · E(α<sub>2</sub>), <br>
+                                … <br>
+                                Q(α<sub>N</sub>) = R(α<sub>N</sub>) · E(α<sub>N</sub>). <br>
+                            </div>
+                        </div>
+                        <p>
+                        Ha kiszámoltuk az ismeretleneket, akkor az e<sub>i</sub>-k értékei megadják a keletkezett hibák helyét. 
+                        Most már tudjuk, hogy mik azok a konkrét értékek, amik megegyeznek c és c′-ben, ezen felül azt is tudjuk, 
+                        hogy melyek azok a c′ értékek, amiket kihagyva és a sértetlenekkel tovább dolgozva megkaphatjuk az eredeti üzenetet. 
+                        Készítsünk még egy egyenletrendszert, az fm(x) felhasználásaval, úgy hogy ezúttal töröljük ki az α-k közül azokat, 
+                        amely helyeken sérült az üzenet, valamint a kódszóból a hibás karaktereket. Így a következőket kapjuk: <br>
+                        </p>
+                        <div class="centered-equations">
+                            <div class="equations">
+                                m<sub>0</sub> + m<sub>1</sub>β<sub>1</sub> + m<sub>2</sub>β<sub>1</sub><sup>2</sup> + … + m<sub>k-1</sub>β<sub>1</sub><sup>k−1</sup> = c<sub>1</sub>, <br>
+                                m<sub>0</sub> + m<sub>1</sub>β<sub>2</sub> + m<sub>2</sub>β<sub>2</sub><sup>2</sup> + … + m<sub>k-1</sub>β<sub>2</sub><sup>k−1</sup> = c<sub>2</sub>, <br>
+                                … <br>
+                                m<sub>0</sub> + m<sub>1</sub>β<sub>m</sub> + m<sub>2</sub>β<sub>m</sub><sup>2</sup> + … + m<sub>k-1</sub>β<sub>m</sub><sup>k−1</sup> = c<sub>m</sub>, <br>
+                            </div>
+                        </div>
+                        <p>
+                        ahol β<sub>i</sub> ∈ α megfelelő α-kra. <br>
+
+                        Ennek a kiszámítása után megoldásként megkapjuk az m vektor elemeit sorra, tehát az eredeti üzenetet. 
+                        </p>
+                    
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <aside>
+                        <p>
+                        A kódom implementációjában nagy segítségemre volt <b>Ashish Choudhury</b> az Indian Institute of Science professzora, 
+                        akinek oktatóvideójának köszönhetően elmélyülhettem a Reed-Solomon hibajavító kódok részleteiben. 
+                        </p>
+                    </aside>
+                </div>
+                <div class="col-md-8">
+                    
+                        <h2>Részlet a videóból:</h2>
+                        <video id="video" class="img-fluid" controls poster="images/cover.jpg">
+                        <source src="images/video.mp4" type="video/mp4">
+                        </video>
+                        <p><a href="video_leiras.html" class="visited-link">Videó leírása.</a></p>
+                    
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>
+            A videó az alábbi linken érhető el:
+            <a href="https://www.youtube.com/watch?v=6X1OCX-iq9w&list=LL&index=11&t=41s" target="_blank" class="visited-link">Reed-Solomon Error-Correcting Codes</a>
+        </p>
+    </footer>
+    
+</body>
+</html>
